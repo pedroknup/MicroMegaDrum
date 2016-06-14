@@ -7,6 +7,8 @@
 //=> Massimo Bernava                                                          <=
 //=> massimo.bernava@gmail.com                                                <=
 //=> 2016-02-10                                                               <=
+//=> Adaptação: Marcos Cesar Monecchi                                         <=
+//=>            Pedro Henrique Knup                                           <=
 //==============================================================================
 
 //========CONFIGURE=============

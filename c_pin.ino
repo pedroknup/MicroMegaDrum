@@ -71,14 +71,14 @@ const byte DP_HHC_RING  = 0x02;
 //--------------------------------------------
 
 #if MEGA
-const byte WTP_RIDEBOW   = 0x0C
-const byte WTP_RIDEEDGE  = 0x0E
-const byte WTP_TOM1HEAD  = 0x0F
-const byte WTP_TOM2HEAD  = 0x0D
-const byte WTP_TOM3HEAD  = 0x0B
-const byte WTP_TOM4HEAD  = 0x08
-const byte WTP_CRASHBOW  = 0x09
-const byte WTP_CRASHEDGE = 0x0A
+const byte DP_RIDEBOW   = 0x0C;
+const byte DP_RIDEEDGE  = 0x0E;
+const byte DP_TOM1HEAD  = 0x0F;
+const byte DP_TOM2HEAD  = 0x0D;
+const byte DP_TOM3HEAD  = 0x0B;
+const byte DP_TOM4HEAD  = 0x08;
+const byte DP_CRASHBOW  = 0x09;
+const byte DP_CRASHEDGE = 0x0A;
 #else
 const byte DP_RIDEBOW   = 0x0C;
 const byte DP_RIDEEDGE  = 0x0E;

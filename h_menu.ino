@@ -575,11 +575,14 @@ void DefaultPrintName(byte pin,bool sel)
     case DP_TOM2HEAD: MenuString(S_TOM2HEAD,sel); break;
     case DP_TOM3HEAD: MenuString(S_TOM3HEAD,sel); break;
     case DP_TOM4HEAD: MenuString(S_TOM4HEAD,sel); break;
+    #if MEGA
+    #else
     case DP_TOM1RIM: MenuString(S_TOM1RIM,sel); break; 
     case DP_TOM2RIM: MenuString(S_TOM2RIM,sel); break;
     case DP_TOM3RIM: MenuString(S_TOM3RIM,sel); break; 
     case DP_TOM4RIM: MenuString(S_TOM4RIM,sel); break;
-
+    #endif
+    
     default: MenuString(S_PIN,sel); break;
   }
 }
