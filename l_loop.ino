@@ -24,7 +24,20 @@ void loop()
 //      USO DO MULTIPLEX RETIRADO NO MEGA
 //---------------------------------------------------------------------------------------
 #if MEGA
-  for(byte Sensor=0;Sensor<NSensor;Sensor++){ analogRead(Sensor); fastScan(Sensor,4); }
+  for(byte Sensor=0;Sensor<NPin;Sensor++)
+  {
+   if (Pin[Sensor].Type != Disabled)
+   {
+     Pin[Sensor].scan(Sensor,0);
+     if (Pin[Sensor].State == Scan_Time)
+     {
+      Pin[Sensor].scan(Sensor,0);
+      Pin[Sensor].scan(Sensor,0);
+      Pin[Sensor].scan(Sensor,0);
+      }
+   }
+   Pin[Sensor].play(Sensor,&Pin[DualSensor(Sensor)]);
+  }
 #else
   //==========UNROLLING======
   //{0, 1, 3, 2, 6, 7, 5, 4}
@@ -69,7 +82,6 @@ void loop()
   /*fastWrite(2,1);fastWrite(3,0);*/fastWrite(4,0);
   delayMicroseconds(delayTime);
   for(byte Sensor=0;Sensor<NSensor;Sensor++){ analogRead(Sensor); fastScan(Sensor,4); }
-#endif
 
   //===============================
   if (Mode==Standby) return;
@@ -88,6 +100,7 @@ void loop()
     //RESET XTALK
   //for(int i=0;i<8;i++)
    // MaxMultiplexerXtalk[i]=MaxXtalkGroup[i]=-1;
+#endif
 }
 
 //==============================

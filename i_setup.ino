@@ -1,3 +1,4 @@
+
 //==============================
 //     SETUP
 //==============================
@@ -35,7 +36,6 @@ void setup()
   #else
     Serial.begin(31250);      // MIDI
   #endif
-  
   Serial.flush();
   
   #if USE_WAVTRIGGER
@@ -79,8 +79,10 @@ void setup()
     // Print a message to the LCD.
     #if NANO
       MenuString(PSTR("nanoDRUM v1.4"),false);
-    #else
+    #elif MEGA  
       MenuString(PSTR("microMegaDRUM v1.4"),false);
+    #else
+      MenuString(PSTR("microDRUM v1.4"),false);
     #endif
   #endif
   

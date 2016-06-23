@@ -1,5 +1,4 @@
 
-
 //=================================
 //   DUAL SENSOR
 //=================================
@@ -56,6 +55,37 @@ enum state:byte
 //===========================
 //   DEFAULT PIN
 //===========================
+
+//--------------------------------------------
+//   DEFINIR MEGA em sketch_microdrum.ino
+//   para usar 16 pinos sem multiplex
+//--------------------------------------------
+
+#if MEGA
+
+//*** Compat�vel com Megadrum
+
+const byte DP_HHC       = 0x00;
+const byte DP_SNAREHEAD = 0x01;
+const byte DP_SNARERIM  = 0x02;
+const byte DP_KICK      = 0x03;
+const byte DP_TOM1HEAD  = 0x04;
+const byte DP_TOM2HEAD  = 0x05;
+const byte DP_TOM3HEAD  = 0x06;
+const byte DP_TOM4HEAD  = 0x07;
+const byte DP_EXTRA1    = 0x08;
+const byte DP_EXTRA2    = 0x09;  
+const byte DP_HHBOW     = 0x0A;
+const byte DP_CHINA     = 0x0B;
+const byte DP_SPLASH    = 0x0C;
+const byte DP_CRASHEDGE = 0x0D;
+const byte DP_RIDEBOW   = 0x0E;
+const byte DP_RIDEEDGE  = 0x0F;
+
+#else
+
+//*** Pinos Padr�es do Microdrum
+
 const byte DP_SNAREHEAD = 0x04;
 const byte DP_SNARERIM  = 0x06;
 const byte DP_KICK      = 0x07;
@@ -65,21 +95,6 @@ const byte DP_HHEDGE    = 0x00;
 const byte DP_HHC       = 0x01;
 const byte DP_HHC_RING  = 0x02;
 
-//--------------------------------------------
-//   DEFINIR MEGA em sketch_microdrum.ino
-//   para usar 16 pinos sem multiplex
-//--------------------------------------------
-
-#if MEGA
-const byte DP_RIDEBOW   = 0x0C;
-const byte DP_RIDEEDGE  = 0x0E;
-const byte DP_TOM1HEAD  = 0x0F;
-const byte DP_TOM2HEAD  = 0x0D;
-const byte DP_TOM3HEAD  = 0x0B;
-const byte DP_TOM4HEAD  = 0x08;
-const byte DP_CRASHBOW  = 0x09;
-const byte DP_CRASHEDGE = 0x0A;
-#else
 const byte DP_RIDEBOW   = 0x0C;
 const byte DP_RIDEEDGE  = 0x0E;
 const byte DP_TOM1HEAD  = 0x0F;
@@ -139,6 +154,10 @@ class pin
   {
     Time=TIMEFUNCTION;
     this->Time=Time+this->MaskTime;
+    #if MEGA
+    this->_pin=pin;
+    #endif
+    
     
     switch(pin)
     {
@@ -147,16 +166,52 @@ class pin
         this->Note=38;
       break;
       case DP_SNARERIM:
-        this->Type=Switch;
-        this->Note=39;
+        this->Type=Piezo;
+        this->Note=42;
       break;
       case DP_KICK:
         this->Type=Piezo;
         this->Note=36;
       break;
+      case DP_TOM1HEAD:
+        this->Type=Piezo;
+        this->Note=71;
+      break;
+      case DP_TOM2HEAD:
+        this->Type=Piezo;
+        this->Note=69;
+      break;
+      case DP_TOM3HEAD:
+        this->Type=Piezo;
+        this->Note=67;
+      break;
+      case DP_TOM4HEAD:
+        this->Type=Piezo;
+        this->Note=65;
+      break;
+      case DP_EXTRA1:
+        this->Type=Piezo;
+        this->Note=47;
+      break;
+      case DP_EXTRA2:
+        this->Type=Piezo;
+        this->Note=73;
+      break;
       case DP_HHBOW:
         this->Type=Piezo;
         this->Note=8;
+      break;
+      case DP_CHINA:
+        this->Type=Piezo;
+        this->Note=77;
+      break;
+      case DP_SPLASH:
+        this->Type=Piezo;
+        this->Note=79;
+      break;
+      case DP_CRASHEDGE:
+        this->Type=Piezo;
+        this->Note=81;
       break;
       case DP_HHC:
         this->Type=HHC;
@@ -177,14 +232,22 @@ class pin
     //===============================
     //        HHC
     //===============================
+    #if MEGA
+    if(Type==HHC) { scanHHC(_pin,analogRead(_pin)); return; }
+    #else
     if(Type==HHC) { scanHHC(pin,analogRead(sensor)/8); return; }
+    #endif
     
     //===============================
     //        Switch
     //===============================
     if(Type==Switch)
     {
+      #if MEGA
+      yn_0 = analogRead(_pin);
+      #else
       yn_0 = analogRead(sensor);
+      #endif
       
       //DrawDiagnostic(MulSensor,yn_0/8);
       if(State==Normal_Time) 
@@ -262,9 +325,11 @@ class pin
           Time = GlobalTime;
         }
       }
-    
+      #if MEGA
+      yn_0 = 0.5 + ((float)analogRead(sensor)*(float)Gain)/64.0;
+      #else   
       yn_0 = 0.5 + ((float)ANALOGREAD(sensor,pin)*(float)Gain)/64.0;
-    
+      #endif
         
       if(State==Retrigger_Time)
       {
@@ -572,6 +637,7 @@ class pin
   //=======================
   byte Type:4; //type
   byte State:4; //state
+  byte _pin;
     
   byte Note;
   union

@@ -1,4 +1,5 @@
 
+
 //==============================
 //    MENU
 //==============================
@@ -115,6 +116,8 @@ LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
 #define S_TOM3RIM PSTR("Tom3 Rim")
 #define S_TOM4HEAD PSTR("Tom4 Head")
 #define S_TOM4RIM PSTR("Tom4 Rim")
+#define S_EXTRA1 PSTR("Extra 1")
+#define S_EXTRA2 PSTR("Extra 2")
 
 //==============================
 //    MENU     
@@ -565,9 +568,12 @@ void DefaultPrintName(byte pin,bool sel)
     case DP_KICK: MenuString(S_KICK,sel); break;
     case DP_HHC: MenuString(S_HHC,sel); break;
     case DP_HHBOW: MenuString(S_HHBOW,sel); break;
+    #if MEGA
+    #else
     case DP_HHEDGE: MenuString(S_HHEDGE,sel); break;
     case DP_EFFECT: MenuString(S_EFFECT,sel); break;
     case DP_CRASHBOW: MenuString(S_CRASHBOW,sel); break;
+    #endif
     case DP_CRASHEDGE: MenuString(S_CRASHEDGE,sel); break;
     case DP_RIDEBOW: MenuString(S_RIDEBOW,sel); break;
     case DP_RIDEEDGE: MenuString(S_RIDEEDGE,sel); break;
@@ -575,6 +581,9 @@ void DefaultPrintName(byte pin,bool sel)
     case DP_TOM2HEAD: MenuString(S_TOM2HEAD,sel); break;
     case DP_TOM3HEAD: MenuString(S_TOM3HEAD,sel); break;
     case DP_TOM4HEAD: MenuString(S_TOM4HEAD,sel); break;
+    case DP_EXTRA1: MenuString(S_EXTRA1,sel); break;
+    case DP_EXTRA2: MenuString(S_EXTRA2,sel); break;
+
     #if MEGA
     #else
     case DP_TOM1RIM: MenuString(S_TOM1RIM,sel); break; 
