@@ -92,6 +92,7 @@ void loop()
   {
     Pin[i].play(i,&Pin[DualSensor(i)]);
   }
+#endif
   //RESET XTALK
   for(int i=0;i<8;i++)
     MaxMultiplexerXtalk[i]=-1;
@@ -100,7 +101,6 @@ void loop()
     //RESET XTALK
   //for(int i=0;i<8;i++)
    // MaxMultiplexerXtalk[i]=MaxXtalkGroup[i]=-1;
-#endif
 }
 
 //==============================
