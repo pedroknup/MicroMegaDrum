@@ -45,4 +45,13 @@ void Sysex(byte cmd,byte* message,byte size)
 }
 //============================
 
+void MIDI_TX(byte MESSAGE, byte PITCH, byte VELOCITY)
+{
+  //status = MESSAGE + midichannel;
+  Serial.write((MESSAGE));
+  Serial.write(PITCH);
+  Serial.write(VELOCITY);
+}
+
+
 

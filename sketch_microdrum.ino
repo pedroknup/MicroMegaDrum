@@ -127,6 +127,52 @@ int MaxXtalkGroup[NXtalkGroup] = {-1};
 int MaxMultiplexerXtalk[8]={-1};
 //===========================
 
+#if MEGA
+ // Define as notas do chocke //
+ #define choke1 78
+ #define choke2 80   
+ #define choke3 82
+ #define chokeRide 63
+ 
+ // Define as Notas dos Plugs Digitais Auxiliares //
+ #define Aux1 47
+ #define Aux2 47
+ #define Aux3 47
+ #define Aux4 47
+ #define Aux5 47
+ #define Aux6 47
+ #define Aux7 47                                  
+
+ //Define os Pinos Digitais dos Chokes
+ #define Choke1_Pin 51 
+ #define Choke2_Pin 49
+ #define Choke3_Pin 47
+ #define ChokeRide_Pin 53
+
+ //Define os Pinos Digitais Auxiliares
+ #define Aux1_Pin 33
+ #define Aux2_Pin 35
+ #define Aux3_Pin 37
+ #define Aux4_Pin 39
+ #define Aux5_Pin 41
+ #define Aux6_Pin 43
+ #define Aux7_Pin 45
+
+//Define o estado dos pinos digitais
+ int Choke1_State = LOW;
+ int Choke2_State = LOW; 
+ int Choke3_State = LOW;
+ int ChokeRide_State = LOW;
+ int Aux1_State = LOW;
+ int Aux2_State = LOW;
+ int Aux3_State = LOW;
+ int Aux4_State = LOW;
+ int Aux5_State = LOW;
+ int Aux6_State = LOW;
+ int Aux7_State = LOW; 
+ 
+ int currentSwitchState = LOW;
+#endif
 
 
 

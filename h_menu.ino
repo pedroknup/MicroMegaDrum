@@ -569,6 +569,8 @@ void DefaultPrintName(byte pin,bool sel)
     case DP_HHC: MenuString(S_HHC,sel); break;
     case DP_HHBOW: MenuString(S_HHBOW,sel); break;
     #if MEGA
+    case DP_EXTRA1: MenuString(S_EXTRA1,sel); break;
+    case DP_EXTRA2: MenuString(S_EXTRA2,sel); break;
     #else
     case DP_HHEDGE: MenuString(S_HHEDGE,sel); break;
     case DP_EFFECT: MenuString(S_EFFECT,sel); break;
@@ -581,8 +583,6 @@ void DefaultPrintName(byte pin,bool sel)
     case DP_TOM2HEAD: MenuString(S_TOM2HEAD,sel); break;
     case DP_TOM3HEAD: MenuString(S_TOM3HEAD,sel); break;
     case DP_TOM4HEAD: MenuString(S_TOM4HEAD,sel); break;
-    case DP_EXTRA1: MenuString(S_EXTRA1,sel); break;
-    case DP_EXTRA2: MenuString(S_EXTRA2,sel); break;
 
     #if MEGA
     #else

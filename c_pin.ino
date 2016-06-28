@@ -132,6 +132,7 @@ class pin
     #if ENABLE_CHANNEL
     Channel=9;
     #endif
+    
     Thresold=20;
     ScanTime=10;
     MaskTime=30;
@@ -189,6 +190,7 @@ class pin
         this->Type=Piezo;
         this->Note=65;
       break;
+     #if MEGA
       case DP_EXTRA1:
         this->Type=Piezo;
         this->Note=47;
@@ -197,6 +199,7 @@ class pin
         this->Type=Piezo;
         this->Note=73;
       break;
+     #endif
       case DP_HHBOW:
         this->Type=Piezo;
         this->Note=8;

@@ -9,7 +9,20 @@ void setup()
 //------------------------------------
 //    MULTIPLEX RETIRADO SE MEGA
 //------------------------------------ 
+
 #if MEGA
+//Ativa os pinos digitais
+ pinMode(Choke1_Pin, INPUT_PULLUP);
+ pinMode(Choke2_Pin, INPUT_PULLUP);
+ pinMode(Choke3_Pin, INPUT_PULLUP);
+ pinMode(ChokeRide_Pin, INPUT_PULLUP);
+ pinMode(Aux1_Pin, INPUT_PULLUP);
+ pinMode(Aux2_Pin, INPUT_PULLUP);
+ pinMode(Aux3_Pin, INPUT_PULLUP);
+ pinMode(Aux4_Pin, INPUT_PULLUP);
+ pinMode(Aux5_Pin, INPUT_PULLUP);
+ pinMode(Aux6_Pin, INPUT_PULLUP);
+ pinMode(Aux7_Pin, INPUT_PULLUP);
 #else
   pinMode(2, OUTPUT);    // s0
   pinMode(3, OUTPUT);    // s1
@@ -79,8 +92,14 @@ void setup()
     // Print a message to the LCD.
     #if NANO
       MenuString(PSTR("nanoDRUM v1.4"),false);
-    #elif MEGA  
-      MenuString(PSTR("microMegaDRUM v1.4"),false);
+    #elif MEGA
+      {
+        lcd.clear();
+        lcd.setCursor(2,0);
+        lcd.print("microMegaDrum");
+        lcd.setCursor(3,1);
+        lcd.print("by Ecchimon");
+        }  
     #else
       MenuString(PSTR("microDRUM v1.4"),false);
     #endif
