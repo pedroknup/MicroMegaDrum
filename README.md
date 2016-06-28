@@ -10,3 +10,5 @@ circuitos multiplexadores para aumentar para até 48 entradas analógicas.
 O objetivo aqui é portar o projeto microdrum para funcionar no projeto Megadrum, para
 tanto é necessário modificar o código para a utilização do Arduino Mega com 16 entradas
 sem o circuito multiplexador adicional.
+
+Adicionado a leitura de pinos digitais para choke dos pratos e sons adicionais.
