@@ -1,0 +1,5 @@
+O arquivo original de PDF é o manual em italiano (Montaggio Base MicroDrum) e
+o arquivo ODG é o manual traduzido em processo de revisão.
+
+A extensão ODG é o formato de arquivo da suíte LibreOfice, que é um pacote de
+aplicativos de código livre (grátis) no mesmo molde do Office da Microsoft.
