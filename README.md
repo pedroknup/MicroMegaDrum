@@ -7,8 +7,14 @@ que possui 16 entradas analógicas.
 O projeto Microdrum é baseado no Arduino UNO, que possui 6 entradas analógicas e utiliza 
 circuitos multiplexadores para aumentar para até 48 entradas analógicas.
 
-O objetivo aqui é portar o projeto microdrum para funcionar no projeto Megadrum. Para
-tanto, é necessário modificar o código para a utilização do Arduino Mega com 16 entradas
+O objetivo aqui é portar o projeto MicroDrum para funcionar no projeto MegaDrum. Para
+tanto, foi necessário modificar o código para a utilização do Arduino Mega com 16 entradas
 sem o circuito multiplexador adicional.
 
 Adicionado a leitura de pinos digitais para choke dos pratos e sons adicionais.
+
+*MegaDrum* agora é TeensyDrum!
+Confira o repositório oficial: 
+https://github.com/massimobernava/md-firmware/tree/teensy-firmware/sketch_microdrum
+
+
